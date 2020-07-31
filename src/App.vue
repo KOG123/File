@@ -1,32 +1,34 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+	<div id="app">
+		<router-view></router-view>
+	</div>
 </template>
 
-<style>
+<script>
+export default {
+	data: () => ({}),
+	methods: {},
+	created() {
+		console.log(window.location.pathname);
+		let pn = window.location.pathname;
+		if (pn === '/homeList/' || pn === '/homeList') {
+			if (
+				navigator.userAgent.match(
+					/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows\sPhone)/i
+				)
+			) {
+				this.$router.push('Mobile');
+			} else {
+				this.$router.push('PC');
+			}
+		}
+	}
+};
+</script>
+
+<style lang="less" scoped>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+	width: 100%;
+	height: 100%;
 }
 </style>

@@ -1,22 +1,43 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from 'views/Home.vue';
 
 Vue.use(VueRouter)
 
-  const routes = [
-  {
+const routes = [{
     path: '/',
     name: 'Home',
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/Mobile',
+    name: 'Mobile',
+    component: () => import( /* webpackChunkName: "Mobile" */ 'views/Mobile/index.vue')
+  },
+  {
+    path: '/PC',
+    name: 'PC',
+    component: () => import( /* webpackChunkName: "PC" */ 'views/PC/index.vue'),
+  },
+  {
+    path: '/chatRoom',
+    name: 'chatRoom',
+    component: () => import( /* webpackChunkName: "PC" */ 'views/PC/chatRoom/chatRoom.vue'),
+  },
+  {
+    path: '/txtToAudio',
+    name: 'txtToAudio',
+    component: () => import( /* webpackChunkName: "PC" */ 'views/PC/txtToAudio/txtToAudio.vue'),
+  },
+  {
+    path: '/serverError',
+    name: 'serverError',
+    component: () => import( /* webpackChunkName: "Error" */ 'views/Error/serverError.vue')
+  },
+  {
+    path: '*',
+    name: 'notFind',
+    component: () => import( /* webpackChunkName: "Error" */ 'views/Error/notFind.vue')
   }
 ]
 
